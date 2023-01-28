@@ -1,0 +1,43 @@
+h2 {
+    position: relative;
+    font-family: "Avenir Next", sans-serif;
+    font-weight: 900;
+    font-size: 50px;
+    text-transform: uppercase;
+    font-style: italic;
+    letter-spacing: 0.05em;
+    display: inline-block;
+}
+
+h2:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: attr(filter-content);
+    filter: url(#motion-blur-filter);
+}
+
+svg {
+    display: none;
+}
+
+ul.pagination li a {
+    border-radius: 5px;
+}
+
+ul.pagination li a.active {
+    border-radius: 5px;
+}
+
+.searchBar {
+    border: red;
+    border-style: solid;
+    border-width: 1px;
+    width: 100%;
+    color: red
+}
+
+.active {
+    color: red;
+    font-weight: bold;
+}

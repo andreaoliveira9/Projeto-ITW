@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Css/drivers.css" rel="stylesheet" />
+    <link href="../Css/navbaixo.css" rel="stylesheet" />
+    <link href="../Css/all.css" rel="stylesheet" />
+    <link href="../Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="../Images/Icon.png" rel="icon" />
+    <title>Drivers</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: red">
+        <div class="container-fluid">
+            <a href="index.html" style="margin-right: 2%;"><img src="../Images/Logo F1.svg" height="40" width="100" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active rounded-pill bg-light text-dark" href="drivers.html"><img src="../Images/Capacete.png" height="15px">
+                            <c style="font-weight: bold;">Drivers</c>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="circuits.html">Circuits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="teams.html">Teams</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="races.html">Races</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="champions.html">Champions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="favorites.html"> Favorites</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="FAQs.html">FAQs</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Working Area -->
+    <main class="background" style="min-height: 737px; padding-top: 50px; padding-bottom: 50px;">
+        <div class="container">
+            <div class="border-bottom pt-4 pb-2 mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg">
+                      <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
+                          <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
+                      </filter>
+                </svg>
+                <h2 style="color: rgb(0, 0, 0);" data-bind="text:displayName" filter-content="D"></h2>
+                <img src="../Images/Capacete.png">
+            </div>
+            <div class="row small mb-2">
+                <div class="col-12 col-md-6 col-lg-9" style="margin-top: 20px;">
+                    <div class="d-inline-flex mt-4" id="forms" style="width: 465px ; margin-left: auto; margin-right: auto;">
+                        <input id="searchbar" class="form-control searchBar" type="search" placeholder="Search" aria-label="Search">
+                        <button style="margin-left: 5px;" class="fa fa-search btn btn-outline-danger" id="lupadef" type="submit" onclick="search()"></button>
+                    </div>
+                </div>
+                <!-- ko if:records().length > 0 -->
+                <div class="col-12 col-md-8 col-lg-3 pt-3">
+                    <div>
+                        <p class="float-end">
+                            <span id="line" style="margin-right: 10px;" data-bind="html: 'Drivers: '+ fromRecord() + '-' + toRecord() + ' of ' + totalRecords()"></span>
+                        </p>
+                    </div>
+                    <div id="pagination" class="mb-0">
+                        <ul class="pagination float-end mb-0 mt-0">
+                            <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
+                            <li class="page-item float-end"><a class="page-link bg-transparent border-0" title="First Page" data-bind="attr: { href: './drivers.html?page=' + '1',  rel:'prev'}" style="color: red;">⇤</a></li>
+                            <li class="page-item float-end"><a class="page-link bg-transparent border-0" title="Previous Page" data-bind="attr: { href: './drivers.html?page=' + previousPage(),  rel:'prev'}" style="color:red">←</a></li>
+                            <!-- /ko -->
+                            <!-- ko foreach: pageArray()-->
+                            <!-- ko if:$data == $parent.currentPage() -->
+                            <li class="active page-item">
+                                <a class="page-link rounded-pill border-0" data-bind="attr: { title:'Current Page ' + $data }, text: $data" style="background-color: red; color: white;"></a>
+                            </li>
+                            <!-- /ko -->
+                            <!-- ko if:$data != $parent.currentPage() -->
+                            <li class="page-item">
+                                <a class="page-link bg-transparent border-0" data-bind="attr: { href: './drivers.html?page=' + $data, title:'Goto Page ' + $data }, text:$data" style="color: black"></a>
+                            </li>
+                            <!-- /ko -->
+                            <!-- /ko -->
+                            <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
+                            <li class="page-item"><a class="page-link bg-transparent border-0" title="Next Page" data-bind="attr: { href: './drivers.html?page=' + nextPage(), rel:'next' }" style="color:red">→</a></li>
+                            <li class="page-item"><a class="page-link bg-transparent border-0" title="Last Page" data-bind="attr: { href: './drivers.html?page=' + totalPages() }" style="color:red">⇥</a></li>
+                            <!-- /ko -->
+                        </ul>
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+            <table class="table table-striped table-sm small">
+                <thead class="bg-dark text-light">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">
+                            <select class='countryFilter bg-dark text-light border-0'>
+                                <option value='null' selected='selected'>Nationality</option>
+                                <option value='American'>American</option>
+                                <option value='German'>German</option>
+                                <option value='British'>British</option>
+                                <option value='Argentine'>Argentine</option>
+                                <option value='Italian'>Italian</option>
+                                <option value='French'>French</option>
+                                <option value='Canadian'>Canadian</option>
+                                <option value='Belgian'>Belgian</option>
+                                <option value='South African'>South African</option>
+                                <option value='Australian'>Australian</option>
+                                <option value='Brazilian'>Brazilian</option>
+                                <option value='Dutch'>Dutch</option>
+                                <option value='Spanish'>Spanish</option>
+                                <option value='Dutch'>Dutch</option>
+                                <option value='Swiss'>Swiss</option>
+                                <option value='Japanese'>Japanese</option>
+                                <option value='Italian'>Italian</option>
+                            </select>
+                        </th>
+                        <th scope="col" class="text-right"></th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: records">
+                    <tr id="tabela">
+                        <td class="align-middle" data-bind="text:DriverId"></td>
+                        <td class="align-middle" data-bind="text:Name"></td>
+                        <td class="align-middle" data-bind="text:Nationality"></td>
+                        <td class="text-end">
+                            <a class="btn btn-default btn-light btn-sm border-0" style="background-color: transparent;" data-bind="attr: { href:'./driverDetails1.html?id=' + DriverId }"><i class="fa fa-eye" title="Selecione para ver detalhes"></i></a>
+                            <button class="btn btn-default btn-sm" id="favs-button" type="button"><i class="fa fa-heart-o" aria-hidden="true" data-bind="click: $parent.favButton.bind($data,DriverId,event), css: $parent.checkButton(DriverId) == true ? 'active' : ''"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-light">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            <img src="../Images/Bandeira.png" height="30" /> Loading...
+                        </h5>
+                    </div>
+                    <div class="modal-body text-center">
+                        <i class="fa fa-spin fa-3x fa-refresh"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 11; position: absolute; right: 8px;">
+            <div class="toast-body" style="color: green; text-align: center;">
+                Subscrito com sucesso!
+            </div>
+        </div>
+    </main>
+    <!-- End of Working Area -->
+    <nav>
+        <div class="footer">
+            <footer class="text-white" style="background-color: red;">
+                <div class="container p-2">
+                    <section class="text-center mb-4">
+                        <a class="btn btn-outline-light btn-floating m-1 " href="https://www.facebook.com/Formula1 " role="button "><i class="fa fa-facebook-f "></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1 " href="https://twitter.com/F1 " role="button "><i class="fa fa-twitter "></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1 " href="https://www.instagram.com/f1/ " role="button "><i class="fa fa-instagram "></i></a>
+                    </section>
+                    <div class="row d-flex justify-content-center ">
+                        <div class="col-3">
+                            <p class="pt-2" style="float: right;">
+                                <strong>Sign up for our newsletter</strong>
+                            </p>
+                        </div>
+                        <div class="col-5">
+                            <div class="form-outline form-white mb-4 ">
+                                <input type="email " id="sub" id="form5Example21 " class="form-control " placeholder="Enter your email address " />
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-outline-light mb-4" onclick="Toasty()">Subscribe</button>
+                        </div>
+                    </div>
+                    <div class="row text-center " style="display: flex; justify-content: center; ">
+                        <div class="col-md-2 col-12 ">
+                            <a class="nav-link " href="circuits.html ">
+                                <h5 style="color:white; "><b><u>Circuits</u></b></h5>
+                            </a>
+                        </div>
+                        <div class="col-md-2 col-12 ">
+                            <a class="nav-link " href="teams.html ">
+                                <h5 style="color:white; "><b><u>Teams</u></b></h5>
+                            </a>
+                        </div>
+                        <div class="col-md-2 col-12 ">
+                            <a class="nav-link " href="races.html ">
+                                <h5 style="color:white; "><b><u>Races</u></b></h5>
+                            </a>
+                        </div>
+                        <div class="col-md-2 col-12 ">
+                            <a class="nav-link " href="champions.html ">
+                                <h5 style="color:white; "><b><u>Champions</u></b></h5>
+                            </a>
+                        </div>
+                        <div class="col-md-2 col-12 ">
+                            <a class="nav-link " href="FAQs.html ">
+                                <h5 style="color:white; "><b><u>FAQs</u></b></h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </nav>
+    <script src="../Scripts/bootstrap.bundle.min.js "></script>
+    <script src="../Scripts/knockout-3.5.1.js "></script>
+    <script src="../Scripts/jquery-3.6.0.min.js "></script>
+    <script src="../Scripts/jquery-ui-1.13.0.min.js "></script>
+    <script src="../Js/drivers.js "></script>
+    <script>
+        var option = {
+            animation: true,
+            delay: 2000
+        };
+
+        function Toasty() {
+            var toast = document.getElementById("liveToast");
+            var toast1 = new bootstrap.Toast(toast, option);
+            toast1.show();
+            $('#sub').val(null);
+        };
+
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
+
+</html>

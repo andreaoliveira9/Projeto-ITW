@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+    <link href="../Css/drivers.css" rel="stylesheet" />
+    <link href="../Css/navbaixo.css" rel="stylesheet" />
+    <link href="../Css/all.css" rel="stylesheet" />
+    <link href="../Images/Icon.png" rel="icon" />
+    <link href="../Css/map.css" rel="stylesheet">
+    <title>Circuits</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: red">
+        <div class="container-fluid">
+            <a href="index.html" style="margin-right: 2%;"><img src="../Images/Logo F1.svg" height="40" width="100" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="drivers.html">Drivers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active rounded-pill bg-light text-dark" href="circuits.html"><img src="https://cdn-icons-png.flaticon.com/512/37/37425.png" height="15px">
+                            <c style="font-weight: bold;">Circuits</c>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="teams.html">Teams</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="races.html">Races</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="champions.html">Champions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="favorites.html"> Favorites</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="FAQs.html">FAQs</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="background" style="min-height: 737px; padding-top: 50px;">
+        <div class="container">
+            <div class="border-bottom pt-4 pb-2 mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg">
+                      <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
+                          <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
+                      </filter>
+                </svg>
+                <h2 style="color: rgb(0, 0, 0);" data-bind="text:displayName" filter-content="D"></h2>
+                <img src="../Images/Circuito.png" height="60px">
+            </div>
+            <div class="row small mb-2">
+                <div class="col-12 col-md-6 col-lg-9" style="margin-top: 20px;">
+                    <div class="d-inline-flex mt-4" id="forms" style="width: 465px ; margin-left: auto; margin-right: auto;">
+                        <input id="searchbar" class="form-control searchBar" type="search" placeholder="Search" aria-label="Search">
+                        <button style="margin-left: 5px;" class="fa fa-search btn btn-outline-danger" id="lupadef" type="submit" onclick="search()"></button>
+                        <select class='countryFilter btn btn-outline-danger' style="margin-left: 5px;">
+                            <option value='null' selected='selected'>Country</option>
+                            <option value='Japan'>Japan</option>
+                            <option value='USA'>USA</option>
+                            <option value='Vietnam'>Vietnam</option>
+                            <option value='Germany'>Germany</option>
+                            <option value='Hungary'>Hungary</option>
+                            <option value='Turkey'>Turkey</option>
+                            <option value='Saudi Arabia'>Saudi Arabia</option>
+                            <option value='Korea'>Korea</option>
+                            <option value='South Africa'>South Africa</option>
+                            <option value='France'>France</option>
+                            <option value='Singapore'>Singapore</option>
+                            <option value='Portugal'>Portugal</option>
+                            <option value='Spain'>Spain</option>
+                            <option value='Canada'>Canada</option>
+                            <option value='Belgium'>Belgium</option>
+                            <option value='Italy'>Italy</option>
+                            <option value='Austria'>Austria</option>
+                            <option value='Australia'>Australia</option>
+                            <option value='Morocco'>Morocco</option>
+                            <option value='UK'>UK</option>
+                            <option value='Mexico'>Mexico</option>
+                            <option value='Brazil'>Brazil</option>
+                            <option value='Argentina'>Argentina</option>
+                            <option value='Bahrain'>Bahrain</option>
+                            <option value='Azerbaijan'>Azerbaijan</option>
+                            <option value='India'>India</option>
+                            <option value='Switzerland'>Switzerland</option>
+                            <option value='Monaco'>Monaco</option>
+                            <option value='Netherlands'>Netherlands</option>
+                            <option value='Sweden'>Sweden</option>
+                            <option value='Malaysia'>Malaysia</option>
+                            <option value='China'>China</option>
+                            <option value='Russia'>Russia</option>
+                            <option value='UAE'>UAE</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- ko if:records().length > 0 -->
+                <div class="col-12 col-md-8 col-lg-3 pt-3">
+                    <div>
+                        <p style="text-align: end;">
+                            <span id="line" style="margin-right: 10px;" data-bind="html: 'Circuits: '+ fromRecord() + '-' + toRecord() + ' of ' + totalRecords()"></span>
+                        </p>
+                    </div>
+                    <div id="pagination" class="mb-0">
+                        <ul class="pagination float-end mb-0 mt-0">
+                            <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
+                            <li class="page-item float-end"><a class="page-link bg-transparent border-0" title="First Page" data-bind="attr: { href: './circuits.html?page=' + '1',  rel:'prev'}" style="color: red;">⇤</a></li>
+                            <li class="page-item float-end"><a class="page-link bg-transparent border-0" title="Previous Page" data-bind="attr: { href: './circuits.html?page=' + previousPage(),  rel:'prev'}" style="color:red">←</a></li>
+                            <!-- /ko -->
+                            <!-- ko foreach: pageArray()-->
+                            <!-- ko if:$data == $parent.currentPage() -->
+                            <li class="active page-item">
+                                <a class="page-link rounded-pill border-0" data-bind="attr: { title:'Current Page ' + $data }, text: $data" style="background-color: red; color: white;"></a>
+                            </li>
+                            <!-- /ko -->
+                            <!-- ko if:$data != $parent.currentPage() -->
+                            <li class="page-item">
+                                <a class="page-link bg-transparent border-0" data-bind="attr: { href: './circuits.html?page=' + $data, title:'Goto Page ' + $data }, text:$data" style="color: black"></a>
+                            </li>
+                            <!-- /ko -->
+                            <!-- /ko -->
+                            <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
+                            <li class="page-item"><a class="page-link bg-transparent border-0" title="Next Page" data-bind="attr: { href: './circuits.html?page=' + nextPage(), rel:'next' }" style="color:red">→</a></li>
+                            <li class="page-item"><a class="page-link bg-transparent border-0" title="Last Page" data-bind="attr: { href: './circuits.html?page=' + totalPages() }" style="color:red">⇥</a></li>
+                            <!-- /ko -->
+                        </ul>
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="container mt-4">
+                <div class="row ">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row" data-bind="foreach: records">
+                                <div class="col-lg-3 col-md-6 col-sm-12" style="height:370px;">
+                                    <div class="card border-4" style="width:300px; height:350px; border-color: black;">
+                                        <div style="margin-bottom: 10px; text-align: center; height: 100px;">
+                                            <h3><strong data-bind="text: Name"></strong></h3>
+                                        </div>
+                                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                                            <img data-bind="attr:{src: ImageUrl}" height="170px" width="100%" />
+                                            <a href="#!">
+                                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                            </a>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div style="color: red; vertical-align: bottom; text-align: center;">
+                                                <h3><strong data-bind="text: Country"></strong> <button type="button" id="heartbtn" class="btn btn-default btn-sm" style="float: right;"><i class="fa fa-heart-o" id="heart" data-bind="click: $parent.favButton.bind($data,CircuitId,event), css: $parent.checkButton(CircuitId) == true ? 'active' : ''" title="Selecione para adicionar aos favoritos"></i></button></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="mapa" style="margin-top: 100px;">
+            <div style="text-align: center;">
+                <h1 style="font-weight: bold;">Distribuição de circuitos pelo mundo</h1>
+            </div>
+            <div id="map"></div>
+        </div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-light">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            <img src="../Images/Bandeira.png" height="30" /> Loading...
+                        </h5>
+                    </div>
+                    <div class="modal-body text-center">
+                        <i class="fa fa-spin fa-3x fa-refresh"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 11; position: absolute; right: 8px;">
+            <div class="toast-body" style="color: green; text-align: center;">
+                Subscrito com sucesso!
+            </div>
+        </div>
+    </main>
+    <nav>
+        <div class="footer">
+            <footer class="text-white" style="background-color: red;">
+                <div class="container p-2">
+                    <section class="text-center mb-4">
+                        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/Formula1" role="button"><i class="fa fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/F1" role="button"><i class="fa fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/f1/" role="button"><i class="fa fa-instagram"></i></a>
+                    </section>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-auto">
+                            <p class="pt-2">
+                                <strong>Sign up for our newsletter</strong>
+                            </p>
+                        </div>
+                        <div class="col-md-5 col-12">
+                            <div class="form-outline form-white mb-4">
+                                <input type="email" id="sub" class="form-control" placeholder="Enter your email address" />
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-outline-light mb-4" onclick="Toasty()">Subscribe</button>
+                        </div>
+                        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 11; position: absolute; bottom: 150px; right: 5px;">
+                            <div class="toast-body" style="color: green; text-align: center;">
+                                Subscrito com sucesso!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row text-center" style="display: flex; justify-content: center;">
+                        <div class="col-md-2 col-12">
+                            <a class="nav-link" href="drivers.html">
+                                <h5 style="color:white;"><b><u>Drivers</u></b></h5>
+                            </a>
+                        </div>
+                        <div class="col-md-2 col-12">
+                            <a class="nav-link" href="teams.html">
+                                <h5 style="color:white;"><b><u>Teams</u></b></h5>
+                            </a>
+                        </div>
+                        <div class="col-md-2 col-12">
+                            <a class="nav-link" href="races.html">
+                                <h5 style="color:white;"><b><u>Races</u></b></h5>
+                            </a>
+                        </div>
+                        <div class="col-md-2 col-12">
+                            <a class="nav-link" href="champions.html">
+                                <h5 style="color:white;"><b><u>Champions</u></b></h5>
+                            </a>
+                        </div>
+                        <div class="col-md-2 col-12">
+                            <a class="nav-link" href="FAQs.html">
+                                <h5 style="color:white;"><b><u>FAQs</u></b></h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </nav>
+    <script src="../Scripts/bootstrap.bundle.min.js"></script>
+    <script src="../Scripts/knockout-3.5.1.js"></script>
+    <script src="../Scripts/jquery-3.6.0.min.js"></script>
+    <script src="../Scripts/jquery-ui-1.13.0.min.js"></script>
+    <script src="../Js/circuits.js"></script>
+    <script src="../Js/map.js"></script>
+    <script>
+        var option = {
+            animation: true,
+            delay: 2000
+        };
+
+        function Toasty() {
+            var toast = document.getElementById("liveToast");
+            var toast1 = new bootstrap.Toast(toast, option);
+            toast1.show();
+            $('#sub').val(null);
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+﻿.nav-link:hover {
+    background-color: red;
+    color: white
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    color: white;
+    background-color: red;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-link {
+    color: black
+}
+
+@media (max-width:428px) {
+    .container-fluid {
+        padding-left: 5px;
+        padding-right: 5px;
+        color: brown;
+    }
+}

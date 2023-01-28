@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Css/navbaixo.css" rel="stylesheet" />
+    <link href="../Css/all.css" rel="stylesheet" />
+    <link href="../Images/Icon.png" rel="icon" />
+    <title>Favorites</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: red">
+        <div class="container-fluid">
+            <a href="index.html" style="margin-right: 2%;"><img src="../Images/Logo F1.svg" height="40" width="100" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="drivers.html">Drivers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="circuits.html">Circuits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="teams.html">Teams</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="races.html">Races</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: white;" href="champions.html">Champions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link tactive rounded-pill bg-light text-dark" href="favorites.html"><i class="fa fa-heart"><c style="font-weight: bold;"> Favorites</c></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="FAQs.html">FAQs</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="background" style="min-height: 929px;">
+        <div class="container" style="padding-top: 100px;">
+            <h3>Drivers</h3>
+            <hr style="height: 2px; border-width: 0; color: gray; background-color: gray">
+            <div id="favsContainer" class="row">
+                <table class="table table-striped table-sm small mt-3">
+                    <thead class="bg-dark text-light">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Nationality</th>
+                            <th scope="col" class="text-right"></th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: driversData">
+                        <tr>
+                            <td class="align-middle" data-bind="text:DriverId"></td>
+                            <td class="align-middle" data-bind="text:Name"></td>
+                            <td class="align-middle" data-bind="text:Nationality"></td>
+                            <td class="text-end">
+                                <a class="btn btn-default btn-sm" data-bind="attr: { href:'./driverDetails3.html?id=' + DriverId }"><i class="fa fa-eye" title="Selecione para ver detalhes"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h3>Teams</h3>
+            <hr style="height: 2px; border-width: 0; color: gray; background-color: gray">
+            <div id="favsContainer" class="row">
+                <table class="table table-striped table-sm small mt-3">
+                    <thead class="bg-dark text-light">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Nationality</th>
+                            <th scope="col" class="text-right"></th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: teamsData">
+                        <tr>
+                            <td class="align-middle" data-bind="text:ConstructorId"></td>
+                            <td class="align-middle" data-bind="text:Name"></td>
+                            <td class="align-middle" data-bind="text:Nationality"></td>
+                            <td class="text-end">
+                                <a class="btn btn-default btn-sm" data-bind="attr: { href:'./teamsDetails2.html?id=' + ConstructorId }"><i class="fa fa-eye" title="Selecione para ver detalhes"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h3>Races</h3>
+            <hr style="height: 2px; border-width:0; color: gray; background-color: gray">
+            <div id="favsContainer" class="row">
+                <table class="table table-striped table-sm small mt-3">
+                    <thead class="bg-dark text-light">
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Circuit Name</th>
+                            <th scope="col">Year</th>
+                            <th scope="col" class="text-right"></th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: racesData">
+                        <tr>
+                            <td class="align-middle" data-bind="text: Name"></td>
+                            <td class="align-middle" data-bind="text: Circuit"></td>
+                            <td class="align-middle" data-bind="text: Year"></td>
+                            <td class="text-end">
+                                <a class="btn btn-default btn-sm" data-bind="attr: { href:'./racesDetails2.html?id=' + RaceId }"><i class="fa fa-eye" title="Selecione para ver detalhes"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h3>Circuits</h3>
+            <hr style="height: 2px; border-width:0; color: gray; background-color: gray">
+            <div id="favsContainer" class="row">
+                <table class="table table-striped table-sm small mt-3">
+                    <thead class="bg-dark text-light">
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Country</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: circuitsData">
+                        <tr>
+                            <td class="align-middle" data-bind="text: Name"></td>
+                            <td class="align-middle" data-bind="text: Location"></td>
+                            <td class="align-middle" data-bind="text: Country"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <script src="../Scripts/bootstrap.bundle.min.js "></script>
+    <script src="../Scripts/knockout-3.5.1.js "></script>
+    <script src="../Scripts/jquery-3.6.0.min.js "></script>
+    <script src="../Scripts/jquery-ui-1.13.0.min.js "></script>
+    <script src="../Js/favoritos.js"></script>
+</body>
+
+</html>

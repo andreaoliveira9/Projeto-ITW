@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../Css/index.css" rel="stylesheet" />
+    <link href="../Css/all.css" rel="stylesheet" />
+    <link href="../Images/Icon.png" rel="icon" />
+    <title>Página Inicial</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: red;">
+        <div class="container-fluid">
+            <a href="index.html" style="margin-right: 2%;"><img src="../Images/Logo F1.svg" height="40" width="100" /></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="width: 100%;">
+                    <li class="nav-item" style="margin-left: 98% ;">
+                        <a class="nav-link text-light" href="favorites.html">
+                            <c style="font-weight: bold;"></c><i class="fa fa-heart" style="display: flex;"><c style="font-weight: bold;"></c></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="background" style=" min-height: 785px; padding-top: 140px; padding-bottom: 54px;">
+        <div>
+            <div class="container">
+                <div class="row" style="justify-content:center">
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <a class="btn" href="drivers.html">
+                            <div class="card-block">
+                                <img src="../Images/Index cards/drivers.jpg" alt="Card One" class="card-img-top">
+                                <div class="card-body">
+                                    <h5 class="card-title">Drivers</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <a class="btn" href="circuits.html">
+                            <div class="card-block">
+                                <img src="../Images/Index cards/circuits.jpg" alt="Card Two" class="card-img-top" height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Circuits</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <a class="btn" href="teams.html">
+                            <div class="card-block">
+                                <img src="../Images/Index cards/teams.jpg" alt="Card Two" class="card-img-top" height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Teams</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row mt-5" style="justify-content:center">
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <a class="btn" href="races.html">
+                            <div class="card-block">
+                                <img src="../Images/Index cards/races.jpg" alt="Card One" class="card-img-top" height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Races</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <a class="btn" href="champions.html">
+                            <div class="card-block">
+                                <img src="../Images/Index cards/champions.jpg" alt="Card One" class="card-img-top" height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">Champions</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <a class="btn" href="FAQs.html">
+                            <div class="card-block">
+                                <img src="../Images/Index cards/faqs.jpg" alt="Card One" class="card-img-top" height="160px">
+                                <div class="card-body">
+                                    <h5 class="card-title">FAQs</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 11; position: absolute; right: 8px;">
+            <div class="toast-body" style="color: green; text-align: center;">
+                Subscrito com sucesso!
+            </div>
+        </div>
+    </main>
+    <nav>
+        <div class="footer">
+            <footer class="text-white" style="background-color: red;">
+                <div class="container" style="padding-bottom: 12px;">
+                    <section class="text-center mb-4">
+                        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/Formula1" role="button"><i class="fa fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/F1" role="button"><i class="fa fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/f1/" role="button"><i class="fa fa-instagram"></i></a>
+                    </section>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-3">
+                            <p class="pt-2" style="float: right;">
+                                <strong>Sign up for our newsletter</strong>
+                            </p>
+                        </div>
+                        <div class="col-5">
+                            <div class="form-outline form-white mb-4">
+                                <input type="email" class="form-control" id="sub" placeholder="Enter your email address" />
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-outline-light mb-4" onclick="Toasty()">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </nav>
+    <script src="../Scripts/bootstrap.bundle.min.js"></script>
+    <script src="../Scripts/knockout-3.5.1.js"></script>
+    <script src="../Scripts/jquery-3.6.0.min.js"></script>
+    <script src="../Scripts/jquery-ui-1.13.0.min.js"></script>
+    <script src="../Js/index.js"></script>
+    <script>
+        var option = {
+            animation: true,
+            delay: 2000
+        };
+
+        function Toasty() {
+            var toast = document.getElementById("liveToast");
+            var toast1 = new bootstrap.Toast(toast, option);
+            toast1.show();
+            $('#sub').val(null);
+        };
+    </script>
+</body>
+
+</html>
